@@ -5,11 +5,11 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Копируем зависимости
-COPY frontend/package.json frontend/package-lock.json ./
+COPY package*.json ./
 RUN npm ci
 
 # Копируем код
-COPY frontend/ .
+COPY . .
 
 # Сборка
 RUN npm run build
